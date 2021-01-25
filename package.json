@@ -1,0 +1,79 @@
+{
+  "name": "Firewalla Management Console",
+  "version": "1.0.0",
+  "author": "Jake Smith - Github:jakesmithqut",
+  "description": "An electron app that gives a view into the online desktop firewalla console.",
+  "main": "main.js",
+  "directories": {
+    "output": "build"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.2.1",
+    "electron-builder": "latest",
+    "electron-packager": "^15.2.0"
+  },
+  "dependencies": {
+    "electron": "^11.2.1",
+    "electron-builder": "latest",
+    "electron-packager": "^15.2.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "Electron_Practice"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "start": "npm install && electron ./app",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "postinstall": "install-app-deps",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "Firewalla Manager",
+    "category": "Firewall",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  }
+}
